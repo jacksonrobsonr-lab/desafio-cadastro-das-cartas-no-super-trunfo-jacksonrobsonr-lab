@@ -1,0 +1,156 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+
+        char estado_carta1, estado_carta2;                      //Estado: Uma letra de 'A' a 'H' (representando um dos oito estados). Tipo: char
+        int codigo_carta1, codigo_carta2;                       //Código da Carta: A letra do estado seguida de um número de 01 a 04 (ex: A01, B03). Tipo: char[] (um array de caracteres, ou string)
+        char cidade_carta1[20], cidade_carta2[20];              //Nome da Cidade: O nome da cidade. Tipo: char[] (string)
+        int n_habitantes_carta1, n_habitantes_carta2;           //População: O número de habitantes da cidade. Tipo: int
+        float area_carta1, area_carta2;                         //Área (em km²): A área da cidade em quilômetros quadrados. Tipo: float
+        float pib_carta1, pib_carta2;                           //PIB: O Produto Interno Bruto da cidade. Tipo: float
+        int turismo_carta1, turismo_carta2;                     //Número de Pontos Turísticos: A quantidade de pontos turísticos na cidade. Tipo: int
+        int opcao_menu_inicial;                                 //variavel para armazenar a escolha do atributo
+        float densidade_carta1, densidade_carta2;               //Densidade Populacional
+        float pib_perc_carta1, pib_perc_carta2;                 //variavel para armazenar pib per capita       
+        long int super_poder_carta1, super_poder_carta2;        //variavel para armazenar o super poder da carta
+
+//entrada de dados da carta 1
+printf("Insira as informações da carta 1\n");
+printf("________________________________\n");
+
+        printf("Insira a letra de 'A' a 'H' que representa seu estado da sua primeira carta: ");
+        scanf(" %c", &estado_carta1);
+        printf("Inserir o código da carta: ");
+        scanf(" %d", &codigo_carta1);
+        printf("Insira o nome da cidade: ");
+        scanf(" %s", &cidade_carta1);
+        printf("Insira o número de habitantes da cidade: ");
+        scanf(" %d", &n_habitantes_carta1);
+        printf("Insira a área da cidade em quilômetros quadrados: ");
+        scanf(" %f", &area_carta1);
+        printf("Insira o Produto Interno Bruto da cidade: ");
+        scanf(" %f", &pib_carta1);
+        printf("Insira quantidade de pontos turísticos na cidade: ");
+        scanf(" %d", &turismo_carta1);
+
+//entrada de dados da carta 2
+printf("\n\nInsira as informações da carta 2\n");
+printf("________________________________\n");
+
+        printf("Insira a letra de 'A' a 'H' que representa seu estado da sua segunda carta: ");
+        scanf(" %c", &estado_carta2);
+        printf("Inserir o código da carta: ");
+        scanf(" %d", &codigo_carta2);
+        printf("Insira o nome da cidade: ");
+        scanf(" %s", &cidade_carta2);
+        printf("Insira o número de habitantes da cidade: ");
+        scanf(" %d", &n_habitantes_carta2);
+        printf("Insira a área da cidade em quilômetros quadrados: ");
+        scanf(" %f", &area_carta2);
+        printf("Insira o Produto Interno Bruto da cidade: ");
+        scanf(" %f", &pib_carta2);
+        printf("Insira quantidade de pontos turísticos na cidade: ");
+        scanf(" %d", &turismo_carta2);
+
+densidade_carta1 = n_habitantes_carta1 / area_carta1;        //Calcular a Densidade Populacional da carta 1
+densidade_carta2 = n_habitantes_carta2 / area_carta2;        //Calcular a Densidade Populacional da carta 2
+pib_perc_carta1 = pib_carta1 / n_habitantes_carta1;          //Calcular o PIB per Capita da carta 1
+pib_perc_carta2 = pib_carta2 / n_habitantes_carta2;          //Calcular o PIB per Capita da carta 2
+super_poder_carta1 = n_habitantes_carta1 + area_carta1 + pib_carta1 + turismo_carta1 + pib_perc_carta1 + (1.0f / densidade_carta1);     //Calcular o super poder da carta 1
+super_poder_carta2 = n_habitantes_carta2 + area_carta2 + pib_carta2 + turismo_carta2 + pib_perc_carta2 + (1.0f / densidade_carta2);     //Calcular o super poder da carta 2
+
+/*saída carta 1
+printf("Carta 1\n");
+        printf("Estado: %c\n", estado_carta1);
+        printf("Código: %c0%d\n", estado_carta1,codigo_carta1);
+        printf("Nome da Cidade: %s\n", cidade_carta1);
+        printf("População: %d\n", n_habitantes_carta1);
+        printf("Área: %.2f km²\n", area_carta1);
+        printf("PIB: %.2f bilhões de reais\n", pib_carta1);
+        printf("Número de Pontos Turísticos: %d\n\n", turismo_carta1);
+//saída carta 2
+printf("Carta 2\n");
+        printf("Estado: %c\n", estado_carta2);
+        printf("Código: %c0%d\n", estado_carta2,codigo_carta2);
+        printf("Nome da Cidade: %s\n", cidade_carta2);
+        printf("População: %d\n", n_habitantes_carta2);
+        printf("Área: %.2f km²\n", area_carta2);
+        printf("PIB: %.2f bilhões de reais\n", pib_carta2);
+        printf("Número de Pontos Turísticos: %d\n\n\n", turismo_carta2);*/
+
+//menu de escolha de atributo
+printf("Qual atributo você quer comparar?\n\n");
+printf("1 - População\n");
+printf("2 - Área\n");
+printf("3 - PIB\n");
+printf("4 - Número de Pontos turísticos\n");
+printf("5 - Densidade Demográfica\n\n");
+printf("Qual você escolhe:");
+scanf("%d",&opcao_menu_inicial);
+
+switch (opcao_menu_inicial){
+        case 1:
+                if (n_habitantes_carta1>n_habitantes_carta2){
+                printf("Atributo escolhido: População\n");
+                printf("Carta 1 - %s: %d\n", cidade_carta1,n_habitantes_carta1);
+                printf("Carta 2 - %s: %d\n", cidade_carta2,n_habitantes_carta2);
+                printf("Resultado: Carta 1 (%c) venceu!\n", estado_carta1);
+                }else{
+                printf("Atributo escolhido: População\n");
+                printf("Carta 1 - %s: %d\n", cidade_carta1,n_habitantes_carta1);
+                printf("Carta 2 - %s: %d\n", cidade_carta2,n_habitantes_carta2);
+                printf("Resultado: Carta 2 (%c) venceu!\n", estado_carta2);
+                }break;
+        case 2:
+                if (area_carta1>area_carta2){
+                printf("Atributo escolhido: Área\n");
+                printf("Carta 1 - %s: %.2f\n", cidade_carta1,area_carta1);
+                printf("Carta 2 - %s: %.2f\n", cidade_carta2,area_carta2);
+                printf("Resultado: Carta 1 (%c) venceu!\n", estado_carta1);
+                }else{
+                printf("Atributo escolhido: Área\n");
+                printf("Carta 1 - %s: %.2f\n", cidade_carta1,area_carta1);
+                printf("Carta 2 - %s: %.2f\n", cidade_carta2,area_carta2);
+                printf("Resultado: Carta 2 (%c) venceu!\n", estado_carta2);
+                }break;
+        case 3:
+                if (pib_carta1>pib_carta2){
+                printf("Atributo escolhido: PIB\n");
+                printf("Carta 1 - %s: %.2f\n", cidade_carta1,pib_carta1);
+                printf("Carta 2 - %s: %.2f\n", cidade_carta2,pib_carta2);
+                printf("Resultado: Carta 1 (%c) venceu!\n", estado_carta1);
+                }else{
+                printf("Atributo escolhido: PIB\n");
+                printf("Carta 1 - %s: %.2f\n", cidade_carta1,pib_carta1);
+                printf("Carta 2 - %s: %.2f\n", cidade_carta2,pib_carta2);
+                printf("Resultado: Carta 2 (%c) venceu!\n", estado_carta2);
+                }break;
+        case 4:
+                if (turismo_carta1>turismo_carta2){
+                printf("Atributo escolhido: Turismo\n");
+                printf("Carta 1 - %s: %.2f\n", cidade_carta1,turismo_carta1);
+                printf("Carta 2 - %s: %.2f\n", cidade_carta2,turismo_carta2);
+                printf("Resultado: Carta 1 (%c) venceu!\n", estado_carta1);
+                }else{
+                printf("Atributo escolhido: Turismo\n");
+                printf("Carta 1 - %s: %.2f\n", cidade_carta1,turismo_carta1);
+                printf("Carta 2 - %s: %.2f\n", cidade_carta2,turismo_carta2);
+                printf("Resultado: Carta 2 (%c) venceu!\n", estado_carta2);
+                }break;
+        case 5:
+                if (densidade_carta1<densidade_carta2){
+                printf("Atributo escolhido: Densidade demográfica\n");
+                printf("Carta 1 - %s: %.2f\n", cidade_carta1,densidade_carta1);
+                printf("Carta 2 - %s: %.2f\n", cidade_carta2,densidade_carta2);
+                printf("Resultado: Carta 1 (%c) venceu!\n", estado_carta1);
+                }else{
+                printf("Atributo escolhido: Densidade demográfica\n");
+                printf("Carta 1 - %s: %.2f\n", cidade_carta1,densidade_carta2);
+                printf("Carta 2 - %s: %.2f\n", cidade_carta2,densidade_carta2);
+                printf("Resultado: Carta 2 (%c) venceu!\n", estado_carta2);
+                }break;        
+}
+}
